@@ -3,9 +3,18 @@ package quiz15;
 public class MainClass {
 
 	public static void main(String[] args) {
-		Unit u = new Unit();
-		Tank t = new Tank();
-		System.out.println(t.hp);
+		Unit m = new Marine();
+		DropShip d = new DropShip();
+//		m.location();
+//		m.move(-3, -4);
+		d.location();
+		d.move(3, 2);
+		d.ride("t","m",1,4);
+		
+		
+	
+			
+		
 		
 	}
 }

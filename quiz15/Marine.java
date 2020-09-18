@@ -2,34 +2,43 @@ package quiz15;
 
 public class Marine extends Unit{
 	
-	public static int attack;
-	public static int armor;
-	
-	static {
-		int attack =6;
-		int armor =0;
-	}
 	public Marine() {
-		this.x =0;
-		this.y =0;
-		this.hp =60;
+		super(0,0,60);
+	}
+	public void name() {
+		System.out.println("marine");
+	}
+	public void location() {
+		
+		System.out.println("마린 현재 위치 x : " +this.getX()+", y : " + this.getY());
+	}
+	public void	move(int x, int y) {
+		int nx;
+		int ny;
+		int cx;
+		int cy;
+		int mdis;
+		/*
+		 * 1. 현재좌표값에서 매개변수의 좌표만큼의 이동한 거리를 구한다.
+		 * 루트근사값은  Math.sqrt(제곱근)을 이용하면 됩니다.
+		 * 2. 현재의 좌표값으로 매개변수의 좌표값으로 변경
+		 * 3. 이동한 거리를 정수형으로 출력
+		 * 
+		 */
+		nx = getX();ny = getY();
+		System.out.println("이동전 좌표 : " +nx+","+ny);
+		
+		setX(x);
+		setY(y);
+		cx = getX();cy = getY();
+		System.out.println("이동할 좌표 : " +cx+","+cy);
+		
+			mdis = (int) Math.sqrt(( ((cx-nx)*(cx-nx)) + ((cy-ny)*(cy-ny))) );			
+		
+	
+		System.out.println("이동한 거리 : " + mdis);
+		
 		
 	}
-
-}
-class Tank extends Unit{
 	
-	public Tank() {
-		this.x =0;
-		this.y =0;
-		this.hp =100;
-	}
-}
-class DropShip extends Unit{
-	
-	public DropShip() {
-		this.x =0;
-		this.y =0;
-		this.hp =60;
-	}
 }
