@@ -17,7 +17,7 @@ public class DropShip extends Unit {
 
 	}
 
-	public void	move(int x, int y) {
+	public void move(int x, int y) {
 		Marine m = new Marine();
 		//Tank t = new Tank();
 		int nx;
@@ -44,11 +44,11 @@ public class DropShip extends Unit {
 	public void ride(String str, String str2, int a, int b) {
 		int space = 0;
 		String[] unit = new String[8];
-		while(space<9) {
-//			if(space==8) {
-//				System.out.print("공간이 부족합니다");
-//				return;
-//			}
+		while(space<8) {
+			if(space==7) {
+				System.out.print("공간이 부족합니다");
+				return;
+			}
 
 			String tank = "tank";
 			String marine = "marine";
