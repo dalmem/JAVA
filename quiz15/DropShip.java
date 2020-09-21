@@ -4,7 +4,7 @@ public class DropShip extends Unit {
 
 
 	public Unit[] unit = new Unit[8];
-
+	int index =0;
 
 
 	public DropShip() {
@@ -27,49 +27,56 @@ public class DropShip extends Unit {
 		int mdis;
 
 		nx = getX();ny = getY();
-		System.out.println("이동전 좌표 : " +nx+","+ny);
+		
 
 		setX(x);
 		setY(y);
 		cx = getX();cy = getY();
-		System.out.println("이동할 좌표 : " +cx+","+cy);
+		
 
 		mdis = (int) Math.sqrt(( ((cx-nx)*(cx-nx)) + ((cy-ny)*(cy-ny))) );			
-
+		
+		for (int i = 0; i < unit.length; i++) {
+			if(unit[i] != null) {
+				unit[i].setX(x);
+				unit[i].setY(y);
+			}
+		}
 
 		System.out.println("이동한 거리 : " + mdis);
 		m.move(cx, cy);
 		//t.move(cx, cy);
 	}
-	public void ride(String str, String str2, int a, int b) {
-		int space = 0;
-		String[] unit = new String[8];
-		while(space<8) {
-			if(space==7) {
-				System.out.print("공간이 부족합니다");
-				return;
-			}
-
-			String tank = "tank";
-			String marine = "marine";
-
-			for (int i = space; i < a; i++) {
-				unit[i]=tank;				
-			}
-			space+=4;
-			for (int j = space; j < b+space; j++) {
-				unit[space]=marine;
-			}
-			space++;
-			
-			
-
-
+	public void ride(Unit unit) {
+		
+		if(unit instanceof Marine && index<=7) {
+			this.unit[index] = unit;
+			index++;//배열 위치 하나 증가
+		}else if(unit instanceof Tank && index <=4) {
+			this.unit[index] = unit;
+			index+=4;
+		}else {
+			System.out.println("수송선 공간이 부족합니다");
+			return;
 		}
-		for (int i = 0; i < unit.length; i++) {
-			System.out.print(unit[i]+ " ");
+		//수송선 정보 출력
+		System.out.print("수송선 정보 [");
+		for (int i = 0; i < this.unit.length; i++) {
+				if(this.unit[i] instanceof Marine)
+				{
+					System.out.print("Marine"+" ");
+				}else if(this.unit[i] instanceof Tank)
+					System.out.print("Tank"+" ");
 		}
+		System.out.println("]");
+		
+		
 	}
+	
+	
+	
+	
+	
+	
+	
 }
-
-

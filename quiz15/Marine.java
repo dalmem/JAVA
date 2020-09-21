@@ -10,7 +10,7 @@ public class Marine extends Unit{
 	}
 	public void location() {
 		
-		System.out.println("마린 현재 위치 x : " +this.getX()+", y : " + this.getY());
+		System.out.println("마린 현재 위치 : " +this.getX()+", " + this.getY());
 	}
 	public void	move(int x, int y) {
 		int nx;
@@ -25,13 +25,13 @@ public class Marine extends Unit{
 		 * 3. 이동한 거리를 정수형으로 출력
 		 * 
 		 */
-		nx = getX();ny = getY();
-		System.out.println("이동전 좌표 : " +nx+","+ny);
+		nx = this.getX();ny = this.getY();
 		
-		setX(x);
-		setY(y);
-		cx = getX();cy = getY();
-		System.out.println("이동할 좌표 : " +cx+","+cy);
+		
+		this.setX(x);
+		this.setY(y);
+		cx = this.getX();cy = this.getY();
+	
 		
 			mdis = (int) Math.sqrt(( ((cx-nx)*(cx-nx)) + ((cy-ny)*(cy-ny))) );			
 		
